@@ -38,7 +38,7 @@ func _physics_process(delta):
 	move8way(get_input().normalized(), delta)
 	
 	# Rotaciona com setas esq/dir, avança para frente/trás com setas up/down
-#	rotAndMove(get_input(), delta)
+	#rotAndMove(get_input(), delta)
 
 	# Gira com o mouse e avança com as setas up/down
 #	mouseTurn(get_input(), delta)
