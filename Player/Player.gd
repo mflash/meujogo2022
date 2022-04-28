@@ -6,6 +6,8 @@ export var gravity = 2500
 
 var velocity = Vector2()
 onready var sprite := $SimplePlayer
+#onready var box := preload("res://Items/Box.tscn")
+export (PackedScene) var box : PackedScene
 
 func get_input():
 	#velocity.x = 0
@@ -47,6 +49,11 @@ func get_input_side():
 		# Avisa aos integrantes do grupo "HUD" (no caso, apenas o HudCanvas)
 		# que o score deve ser alterado		
 		get_tree().call_group("HUD", "updateScore")
+		
+		# Demonstração de instanciação: gera uma "caixa" quando o jogador saltar
+		var b := box.instance()
+		b.position = global_position # global_position é a posição do player no universo
+		owner.add_child(b) # owner é o "dono" do Nodo, usualmente a cena onde ele está
 	
 	if velocity.x > 0:
 		sprite.play("right")

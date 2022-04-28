@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tiles/Plataformas.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Hud.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Items/Box.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 508.5, 41.75 )
@@ -11,6 +12,7 @@ extents = Vector2( 508.5, 41.75 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 617, 158 )
+box = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
