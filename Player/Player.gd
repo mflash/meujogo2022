@@ -6,6 +6,7 @@ export var gravity = 2500
 
 var velocity = Vector2()
 onready var sprite := $SimplePlayer
+onready var jumpAudio := $JumpSound
 #onready var box := preload("res://Items/Box.tscn")
 export (PackedScene) var box : PackedScene
 
@@ -54,6 +55,8 @@ func get_input_side():
 		var b := box.instance()
 		b.position = global_position # global_position é a posição do player no universo
 		owner.add_child(b) # owner é o "dono" do Nodo, usualmente a cena onde ele está
+		if !jumpAudio.playing:
+			jumpAudio.play()
 	
 	if velocity.x > 0:
 		sprite.play("right")

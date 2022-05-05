@@ -15,9 +15,19 @@ func _physics_process(delta: float) -> void:
 		return
 	if player.position.y > sceneLimit.position.y:
 		get_tree().change_scene("res://Scenes/GameOver.tscn")
+		
 	if Input.is_key_pressed(KEY_X):
 		call_deferred("goto_scene", "res://Scenes/GameOver.tscn")
-				
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):	
+		var effect := AudioServer.get_bus_effect(2, 0)
+		var cutoff = effect.get_cutoff()
+		if cutoff == 200:
+			effect.set_cutoff(20000)
+		else:
+			effect.set_cutoff(200)		
+			
 func goto_scene(path: String):
 	print("Total children: "+str(get_child_count()))
 	var world := get_child(0)
